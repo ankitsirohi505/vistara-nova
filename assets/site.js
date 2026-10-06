@@ -122,8 +122,6 @@ const PROGRESS_STEPS = Object.freeze([
   { id: 'done', title: 'Done' }
 ]);
 
-const MASK = '••••••••••••';
-
 const ICONS = Object.freeze({
   plane: '<path d="M21.6 12c0 .7-.6 1.25-1.35 1.25H15l-4.1 7.25H8.75l2.35-7.25H6.3l-1.65 2.2H3l1.05-3.45L3 8.55h1.65l1.65 2.2h4.8L8.75 3.5h2.15L15 10.75h5.25c.75 0 1.35.55 1.35 1.25z"/>',
   search: '<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/>',
@@ -1748,21 +1746,8 @@ function placeholderHtml() {
   </div>`;
 }
 
-function payloadHtml(payload) {
-  const keys = Object.keys(payload);
-  const lines = keys.map((key, i) => {
-    const value = payload[key];
-    let rendered;
-    if (key === 'apiKey') rendered = `<span class="j-mask">"${esc(value)}"</span>`;
-    else if (typeof value === 'number') rendered = `<span class="j-num">${esc(value)}</span>`;
-    else rendered = `<span class="j-str">${esc(JSON.stringify(value))}</span>`;
-    return `  <span class="j-key">"${esc(key)}"</span><span class="j-p">:</span> ${rendered}${i < keys.length - 1 ? '<span class="j-p">,</span>' : ''}`;
-  });
-  return `<span class="j-p">{</span>\n${lines.join('\n')}\n<span class="j-p">}</span>`;
-}
-
-function buildPayload(f, w, masked) {
-  const payload = { apiKey: masked ? MASK : Ops.key, flightId: f.id, type: w.type, reason: w.reason };
+function buildPayload(f, w) {
+  const payload = { apiKey: Ops.key, flightId: f.id, type: w.type, reason: w.reason };
   if (w.type === 'DELAYED') payload.delayMinutes = w.delay;
   if (w.type === 'RESCHEDULED') payload.newDeparture = `${w.date}T${w.time}`;
   return payload;
@@ -2362,11 +2347,7 @@ const OpsView = {
           <div class="tile"><span class="tile__n">${pax}</span><span class="tile__l">${pax === 1 ? 'Passenger' : 'Passengers'} on their bookings</span></div>
           <div class="tile tile--partner"><span class="tile__l">Partner notified</span><span class="tile__partner">${icon('send')}Aspire Lifestyles via Salesforce</span></div>
         </div>
-        <p class="impact-note">${icon('info')}<span>${customers ? 'Salesforce identifies each traveller, notifies them by app or email and rebooks them on the best next flight automatically.' : 'No Aspire Lifestyles customers are booked on this flight. Salesforce still records the update and changes the flight.'}</span></p>
-        <div class="payload">
-          <div class="payload__bar"><span class="payload__method">POST</span><span class="payload__path">/services/apexrest/vistaraNova/updates</span><span class="payload__tag">Payload preview, key hidden</span></div>
-          <pre class="payload__code"><code>${payloadHtml(buildPayload(f, w, true))}</code></pre>
-        </div>${errorSlot}`;
+        <p class="impact-note">${icon('info')}<span>${customers ? 'Salesforce identifies each traveller, notifies them by app or email and rebooks them on the best next flight automatically.' : 'No Aspire Lifestyles customers are booked on this flight. Salesforce still records the update and changes the flight.'}</span></p>${errorSlot}`;
     }
     const customers = num(f.aspireCustomers, 0);
     const pax = num(f.aspirePassengers, 0);
@@ -2470,7 +2451,7 @@ const OpsView = {
       }
     }, CONFIG.slowNoticeMs);
     try {
-      const res = await Api.sendUpdate(buildPayload(f, w, false));
+      const res = await Api.sendUpdate(buildPayload(f, w));
       clearTimeout(slowTimer);
       if (!res.reference) throw new ApiError('Salesforce accepted the request but did not return a reference.', 0);
       const ref = res.reference;
