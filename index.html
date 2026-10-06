@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#071029">
+  <meta name="description" content="Vistara Nova is a fictional airline created for a Salesforce demo: live flight status and an operations console that sends schedule changes to Salesforce.">
+  <title>Vistara Nova | Fly toward brighter horizons</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Vistara Nova">
+  <meta property="og:description" content="A fictional airline built for a Salesforce demo: live flight status and an operations console that rebooks Aspire Lifestyles customers automatically.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&amp;fit=crop&amp;w=1200&amp;q=70">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://orgfarm-e88355df2d-dev-ed.develop.my.site.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400..800&display=swap">
+  <link rel="stylesheet" href="assets/site.css?v=20261006">
+  <script type="module" src="assets/site.js?v=20261006"></script>
+</head>
+<body data-route="home">
+  <a class="skip-link" href="#main" data-skip>Skip to main content</a>
+
+  <header class="site-header" data-header data-theme="overlay">
+    <div class="header-inner container">
+      <a class="brand" href="#/" aria-label="Vistara Nova home">
+        <img class="brand__mark" src="assets/logo.svg" alt="" width="36" height="36">
+        <span class="brand__word" aria-hidden="true"><span class="brand__a">Vistara</span><span class="brand__b">Nova</span></span>
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Main">
+        <ul class="main-nav__list">
+          <li><a class="main-nav__link" href="#/book" data-nav="book">Book</a></li>
+          <li><a class="main-nav__link" href="#/status" data-nav="status">Flight status</a></li>
+          <li><a class="main-nav__link" href="#/destinations" data-nav="destinations">Destinations</a></li>
+          <li><a class="main-nav__link" href="#/alerts" data-nav="alerts">Travel alerts<span class="nav-badge" data-alert-count hidden></span></a></li>
+        </ul>
+        <a class="nav-ops" href="#/ops" data-nav="ops">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg>
+          <span>Operations Control</span>
+        </a>
+      </nav>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-nav-toggle>
+        <span class="sr-only">Menu</span>
+        <span class="nav-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="site-main" tabindex="-1">
+    <noscript>
+      <div class="noscript container">
+        <h1>Vistara Nova</h1>
+        <p>This site needs JavaScript to show live flights from Salesforce. Please enable it and reload the page.</p>
+      </div>
+    </noscript>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-top">
+      <div class="footer-brand">
+        <a class="brand brand--footer" href="#/" aria-label="Vistara Nova home">
+          <img class="brand__mark" src="assets/logo.svg" alt="" width="40" height="40">
+          <span class="brand__word" aria-hidden="true"><span class="brand__a">Vistara</span><span class="brand__b">Nova</span></span>
+        </a>
+        <p class="footer-brand__text">Calm cabins, thoughtful service and partners who look after you when plans change.</p>
+        <p class="footer-brand__contact">Reservations <a href="tel:+18005550142">+1 800 555 0142</a></p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <div class="footer-col">
+          <h2 class="footer-col__title">Fly</h2>
+          <ul>
+            <li><a href="#/book">Book a flight</a></li>
+            <li><a href="#/destinations">Destinations</a></li>
+            <li><a href="#/status">Flight status</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2 class="footer-col__title">Travel care</h2>
+          <ul>
+            <li><a href="#/alerts">Travel alerts</a></li>
+            <li><a href="#/rebooking">How rebooking works</a></li>
+            <li><a href="#/status?st=disrupted">Disrupted flights</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h2 class="footer-col__title">Partners</h2>
+          <ul>
+            <li><a href="#/ops">Operations Control</a></li>
+            <li><span class="footer-col__text">Aspire Lifestyles concierge</span></li>
+            <li><span class="footer-col__text">Aurora Sky Alliance</span></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="container footer-notice">
+      <span class="footer-notice__tag">Demo notice</span>
+      <p>Vistara Nova is a fictional airline created for a Salesforce demo. It is not affiliated with any real airline. Flights shown are demo records from Salesforce.</p>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Vistara Nova, a fictional airline</p>
+      <p>Photography from Unsplash</p>
+    </div>
+  </footer>
+
+  <div class="toasts" data-toasts aria-live="polite" aria-atomic="false"></div>
+  <div class="sr-only" data-announcer aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
