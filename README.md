@@ -24,7 +24,7 @@ The site is a single page app with hash routes, so it works on GitHub Pages with
 3. Pick a flight and use **Disrupt this flight**:
    - Step 1: Cancel, Delay or Reschedule.
    - Step 2: Reason (Weather, Crew availability, Technical, Air traffic control, Airport operations), plus a delay slider (30 to 600 minutes) or a new date and time.
-   - Step 3: Impact preview (Aspire Lifestyles customers and passengers, partner notified "Aspire Lifestyles via Salesforce") and the JSON payload with the key hidden.
+   - Step 3: Impact preview (Aspire Lifestyles customers and passengers, partner notified "Aspire Lifestyles via Salesforce").
    - Step 4: **Send to partners**.
 4. The live timeline (Update sent, Received by Salesforce, Customers identified, Notifications sent, Rebooking each customer, Done) and the customer table are driven by `GET /updates/{reference}` every 2.5 seconds until the update is Completed or Failed. Polling pauses while the tab is hidden and stops when the update finishes.
 5. When it finishes, a banner shows the result, for example "6 customers protected in 41 seconds".
