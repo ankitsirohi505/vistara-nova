@@ -1872,7 +1872,9 @@ function bannerHtml(m) {
     const extras = [];
     if (m.withRep) extras.push(`${plural(m.withRep, 'customer')} ${m.withRep === 1 ? 'is' : 'are'} with a service rep.`);
     if (m.attention) extras.push(`${plural(m.attention, 'customer')} ${m.attention === 1 ? 'needs' : 'need'} attention.`);
-    const text = `Every affected Aspire Lifestyles traveller was handled automatically by Salesforce and told about their new flight.${extras.length ? ` ${extras.join(' ')}` : ''}`;
+    const text = extras.length
+      ? `Salesforce handled every affected Aspire Lifestyles traveller automatically. ${extras.join(' ')}`
+      : 'Every affected Aspire Lifestyles traveller was looked after and notified automatically by Salesforce.';
     return `<div class="banner banner--success" role="status">
       <div class="banner__burst" aria-hidden="true"><svg viewBox="0 0 64 64"><path class="b1" fill="#2dd4cf" d="M32 10c1.3 10.6 5.4 14.7 16 16-10.6 1.3-14.7 5.4-16 16-1.3-10.6-5.4-14.7-16-16 10.6-1.3 14.7-5.4 16-16z"/><path class="b2" fill="#ff8a70" d="M50 6c.5 4.4 2.3 6.2 6.7 6.7-4.4.5-6.2 2.3-6.7 6.7-.5-4.4-2.3-6.2-6.7-6.7 4.4-.5 6.2-2.3 6.7-6.7z"/><path class="b3" fill="#7feee5" d="M12 42c.5 4.4 2.3 6.2 6.7 6.7-4.4.5-6.2 2.3-6.7 6.7-.5-4.4-2.3-6.2-6.7-6.7 4.4-.5 6.2-2.3 6.7-6.7z"/></svg></div>
       <div><p class="banner__title">${title}</p><p class="banner__text">${esc(text)}</p></div>
